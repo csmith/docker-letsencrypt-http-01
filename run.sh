@@ -14,6 +14,11 @@ else
   DEHYDRATED_CMD="/dehydrated"
 fi
 
+if [ ! -e /letsencrypt/well-known ]; then
+  mkdir -p /letsencrypt/well-known
+  chmod 755 /letsencrypt/well-known
+fi;
+
 while true; do
   $DEHYDRATED_CMD --cron --challenge http-01
   $DEHYDRATED_CMD --cleanup
