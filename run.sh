@@ -20,7 +20,7 @@ if [ ! -e /letsencrypt/well-known ]; then
 fi;
 
 while true; do
-  $DEHYDRATED_CMD --cron --challenge http-01
+  $DEHYDRATED_CMD --cron --keep-going --challenge http-01
   $DEHYDRATED_CMD --cleanup
   inotifywait --timeout 86400 /letsencrypt/domains.txt
   sleep 60
